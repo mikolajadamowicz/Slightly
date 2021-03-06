@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, ScrollView } from 'react-native';
+import FadeInOut from 'react-native-fade-in-out';
+import { View, Button, ScrollView } from 'react-native';
 import Chart from '../../components/LineChart';
 import AppText from '../../components/AppText';
 import { LastDays } from '../../reducers/timeDataSlice';
@@ -37,6 +38,9 @@ const MainView: React.FC<Props> = ({
       <AppText style={styles.score}>{score}</AppText>
       <ScaleIcon onPress={appendScore} name="plus" />
     </View>
+    <FadeInOut isVisible={true} duration={500}>
+      <Headline style={styles.header}>Last 7 days</Headline>
+    </FadeInOut>
   </ScrollView>
 );
 
