@@ -5,7 +5,7 @@ import { BUTTON_SCALE, COLORS } from '../constants';
 
 type Props = {
   size?: number;
-  color: string;
+  color?: string;
   name: string;
 } & TouchableScaleProps;
 

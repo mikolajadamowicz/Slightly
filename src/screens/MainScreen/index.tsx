@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   setGlobalScore,
@@ -6,25 +6,25 @@ import {
 } from '../../reducers/timeDataSlice';
 import { last } from 'lodash';
 import MainView from './MainView';
+import { useScore } from './hooks';
 
 const MainScreen: React.FC = () => {
   const timeData = useSelector(selectLast7DaysScore);
   const lastScore = last(timeData?.scores);
 
   const dispatch = useDispatch();
-  const [score, setScore] = useState(0);
 
-  const setClicked = () => {
+  const setScore = (score: number) =>
     dispatch(setGlobalScore({ score, today: new Date().toISOString() }));
-    setScore(0);
-  };
+
+  const { score, appendScore, subtractScore } = useScore(setScore);
 
   const props = {
     timeData,
-    setScore,
     score,
-    setClicked,
     lastScore,
+    appendScore,
+    subtractScore,
   };
 
   return <MainView {...props} />;

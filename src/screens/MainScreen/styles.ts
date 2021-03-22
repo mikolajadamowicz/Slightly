@@ -9,9 +9,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
+    marginHorizontal: '10%',
+    marginVertical: '20%',
   },
   score: {
-    margin: '10%',
     alignSelf: 'center',
     fontSize: 24,
   },
