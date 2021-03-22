@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { toRad, translateZ } from 'react-native-redash/lib/module/v1';
-import { verticalScale } from 'react-native-size-matters';
+import { scale, verticalScale } from 'react-native-size-matters';
 import Animated, {
   interpolate,
   event,
@@ -10,12 +10,15 @@ import Animated, {
   Extrapolate,
   sin,
   abs,
+  set,
+  add,
 } from 'react-native-reanimated';
 import { ViewStyle } from 'react-native';
 import { CHART_HEIGHT } from '../constants';
 
-const HEIGHT = CHART_HEIGHT + 40;
-const OPACITY = HEIGHT - 50;
+const offset = verticalScale(150);
+const HEIGHT = CHART_HEIGHT - offset;
+const OPACITY = HEIGHT;
 
 const useCardFlipOnScroll = (): [
   (...args: any[]) => void,
@@ -29,7 +32,7 @@ const useCardFlipOnScroll = (): [
   const rotateX = concat(
     interpolate(scrollY, {
       inputRange: [0, HEIGHT],
-      outputRange: [0, -140],
+      outputRange: [0, -90],
       extrapolate: Extrapolate.CLAMP,
     }),
     'deg'
@@ -55,7 +58,7 @@ const useCardFlipOnScroll = (): [
     {
       nativeEvent: {
         contentOffset: {
-          y: scrollY,
+          y: (y) => set(scrollY, add(y, scale(-35))),
         },
       },
     },
