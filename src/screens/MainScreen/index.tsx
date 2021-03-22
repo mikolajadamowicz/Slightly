@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   setGlobalScore,
@@ -14,8 +14,11 @@ const MainScreen: React.FC = () => {
 
   const dispatch = useDispatch();
 
-  const setScore = (score: number) =>
-    dispatch(setGlobalScore({ score, today: new Date().toISOString() }));
+  const setScore = useCallback(
+    (score: number) =>
+      dispatch(setGlobalScore({ score, today: new Date().toISOString() })),
+    [dispatch]
+  );
 
   const { score, appendScore, subtractScore } = useScore(setScore);
 
