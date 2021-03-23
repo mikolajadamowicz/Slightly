@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useIsFocused } from '@react-navigation/native';
 import {
   setGlobalScore,
   selectLast7DaysScore,
@@ -9,6 +10,7 @@ import MainView from './MainView';
 import { useScore } from './hooks';
 
 const MainScreen: React.FC = () => {
+  const isFocused = useIsFocused();
   const timeData = useSelector(selectLast7DaysScore);
   const lastScore = last(timeData?.scores);
 
@@ -28,6 +30,7 @@ const MainScreen: React.FC = () => {
     lastScore,
     appendScore,
     subtractScore,
+    isFocused,
   };
 
   return <MainView {...props} />;

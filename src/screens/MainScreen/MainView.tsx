@@ -14,6 +14,7 @@ type Props = {
   lastScore: LastDays['scoreToday'];
   appendScore: () => void;
   subtractScore: () => void;
+  isFocused: boolean;
 };
 
 const MainView: React.FC<Props> = ({
@@ -22,26 +23,26 @@ const MainView: React.FC<Props> = ({
   appendScore,
   subtractScore,
   lastScore,
+  isFocused,
 }) => (
-  <ScrollView style={styles.root} contentContainerStyle={styles.scrollView}>
-    <Headline style={styles.header}>Last 7 days</Headline>
-    <Chart dataset={timeData.scores} labels={timeData.labels} />
-    <View style={styles.header}>
-      <AppText
-        style={styles.desc}>{`Your overall score is ${lastScore}`}</AppText>
-      <AppText style={styles.desc}>
-        {`Your today's score is ${timeData.scoreToday}`}
-      </AppText>
-    </View>
-    <View style={styles.buttons}>
-      <ScaleIcon onPress={subtractScore} name="minus" />
-      <AppText style={styles.score}>{score}</AppText>
-      <ScaleIcon onPress={appendScore} name="plus" />
-    </View>
-    <FadeInOut isVisible={true} duration={500}>
+  <FadeInOut isVisible={isFocused} duration={500}>
+    <ScrollView style={styles.root} contentContainerStyle={styles.scrollView}>
       <Headline style={styles.header}>Last 7 days</Headline>
-    </FadeInOut>
-  </ScrollView>
+      <Chart dataset={timeData.scores} labels={timeData.labels} />
+      <View style={styles.header}>
+        <AppText
+          style={styles.desc}>{`Your overall score is ${lastScore}`}</AppText>
+        <AppText style={styles.desc}>
+          {`Your today's score is ${timeData.scoreToday}`}
+        </AppText>
+      </View>
+      <View style={styles.buttons}>
+        <ScaleIcon onPress={subtractScore} name="minus" />
+        <AppText style={styles.score}>{score}</AppText>
+        <ScaleIcon onPress={appendScore} name="plus" />
+      </View>
+    </ScrollView>
+  </FadeInOut>
 );
 
 export default MainView;
