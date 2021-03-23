@@ -1,12 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  root: {
-    paddingVertical: 20,
-  },
-  scrollView: {
-    alignItems: 'center',
-  },
   buttons: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -17,9 +11,6 @@ const styles = StyleSheet.create({
   score: {
     alignSelf: 'center',
     fontSize: 24,
-  },
-  header: {
-    margin: '5%',
   },
 });
 
