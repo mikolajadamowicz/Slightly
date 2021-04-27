@@ -2,7 +2,7 @@ import React from 'react';
 import FadeInOut from 'react-native-fade-in-out';
 import { ScrollView } from 'react-native';
 import Chart from '../../components/LineChart';
-import { LastDays } from '../../reducers/timeDataSlice';
+import { LastDays } from '../../reducers/timeDataSlice/types';
 import styles from './styles';
 import Headline from '../../components/Headline';
 import Description from './Description';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import AppText from '../../../components/AppText';
-import { LastDays } from '../../../reducers/timeDataSlice';
+import { LastDays } from '../../../reducers/timeDataSlice/types';
 import styles from './styles';
 
 type Props = {

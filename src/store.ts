@@ -10,14 +10,14 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import timeDataReducer from './reducers/timeDataSlice';
+import timeDataModule from './reducers/timeDataSlice';
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
 };
 
-const rootReducer = persistReducer(persistConfig, timeDataReducer);
+const rootReducer = persistReducer(persistConfig, timeDataModule.reducer);
 
 const store = configureStore({
   reducer: rootReducer,

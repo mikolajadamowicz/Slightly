@@ -3,7 +3,7 @@ import { View, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { EdgeInsets } from 'react-native-safe-area-context';
 import TitleChart from '../../components/TitleChart';
-import { LastDays } from '../../reducers/timeDataSlice';
+import { LastDays } from '../../reducers/timeDataSlice/types';
 import styles from './styles';
 
 type Props = {
